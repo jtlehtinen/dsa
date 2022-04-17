@@ -8,12 +8,14 @@ import (
 func testSort(t *testing.T, f func(x []int) []int) {
 	t.Helper()
 
-	in := generateIntSlice(1000, 0xcafebabe)
-	want := sortedCopy(in)
+	for i := 0; i < 10; i++ {
+		in := generateIntSlice(1000, 0xcafebabe)
+		want := sortedCopy(in)
 
-	got := f(in)
-	if !compareIntSlices(got, want) {
-		t.Errorf("didn't get what wanted :(")
+		got := f(in)
+		if !compareIntSlices(got, want) {
+			t.Errorf("didn't get what wanted :(")
+		}
 	}
 }
 
