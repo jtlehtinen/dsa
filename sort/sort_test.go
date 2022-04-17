@@ -53,3 +53,11 @@ func BenchmarkReference(b *testing.B) {
 func BenchmarkBubble(b *testing.B) {
 	benchSort(b, Bubble[int])
 }
+
+func BenchmarkInsertion(b *testing.B) {
+	benchSort(b, Insertion[int])
+}
+
+func BenchmarkSelection(b *testing.B) {
+	benchSort(b, Selection[int])
+}
