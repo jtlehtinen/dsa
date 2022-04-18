@@ -8,14 +8,12 @@ import (
 func testSort(t *testing.T, f func(x []int) []int) {
 	t.Helper()
 
-	for i := 0; i < 10; i++ {
-		in := generateIntSlice(1000, 0xcafebabe)
-		want := sortedCopy(in)
+	in := generateIntSlice(1000, 0xcafebabe)
+	want := sortedCopy(in)
 
-		got := f(in)
-		if !compareIntSlices(got, want) {
-			t.Errorf("didn't get what wanted :(")
-		}
+	got := f(in)
+	if !compareIntSlices(got, want) {
+		t.Errorf("didn't get what wanted :(")
 	}
 }
 
@@ -29,6 +27,10 @@ func TestInsertion(t *testing.T) {
 
 func TestSelection(t *testing.T) {
 	testSort(t, Selection[int])
+}
+
+func TestQuick(t *testing.T) {
+	testSort(t, Quick[int])
 }
 
 func benchSort(b *testing.B, f func(x []int) []int) {
@@ -62,4 +64,8 @@ func BenchmarkInsertion(b *testing.B) {
 
 func BenchmarkSelection(b *testing.B) {
 	benchSort(b, Selection[int])
+}
+
+func BenchmarkQuick(b *testing.B) {
+	benchSort(b, Quick[int])
 }
