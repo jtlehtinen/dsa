@@ -4,7 +4,7 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-func Selection[T constraints.Ordered](x []T) []T {
+func Selection[T constraints.Ordered](x []T) {
 	n := len(x)
 
 	for i := 0; i < n-1; i++ {
@@ -16,6 +16,4 @@ func Selection[T constraints.Ordered](x []T) []T {
 		}
 		x[i], x[min] = x[min], x[i]
 	}
-
-	return x
 }

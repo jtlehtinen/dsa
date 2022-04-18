@@ -5,15 +5,19 @@ import (
 	"testing"
 )
 
-func testSort(t *testing.T, f func(x []int) []int) {
+func testSort(t *testing.T, f func(x []int)) {
 	t.Helper()
 
-	in := generateIntSlice(1000, 0xcafebabe)
-	want := sortedCopy(in)
+	for i := 0; i < 10; i++ {
+		in := generateIntSlice(100, 0xcafebabe)
+		want := sortedCopy(in)
 
-	got := f(in)
-	if !compareIntSlices(got, want) {
-		t.Errorf("didn't get what wanted :(")
+		f(in)
+		got := in
+
+		if !compareIntSlices(got, want) {
+			t.Errorf("didn't get what wanted :(")
+		}
 	}
 }
 
@@ -33,7 +37,7 @@ func TestQuick(t *testing.T) {
 	testSort(t, Quick[int])
 }
 
-func benchSort(b *testing.B, f func(x []int) []int) {
+func benchSort(b *testing.B, f func(x []int)) {
 	var seed int64 = 0xdeadbeef
 
 	for n := 0; n < b.N; n++ {
@@ -41,17 +45,12 @@ func benchSort(b *testing.B, f func(x []int) []int) {
 		in := generateIntSlice(1000, seed)
 		seed++
 		b.StartTimer()
-		_ = f(in)
+		f(in)
 	}
 }
 
-var reference = func(x []int) []int {
-	sort.Ints(x)
-	return x
-}
-
 func BenchmarkReference(b *testing.B) {
-	benchSort(b, reference)
+	benchSort(b, sort.Ints)
 }
 
 func BenchmarkBubble(b *testing.B) {

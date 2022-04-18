@@ -7,7 +7,7 @@ import (
 // Bubble sorts the slice x using bubble sort algorithm.
 //
 // https://en.wikipedia.org/wiki/Bubble_sort
-func Bubble[T constraints.Ordered](x []T) []T {
+func Bubble[T constraints.Ordered](x []T) {
 	swapped := true
 	for last := len(x); swapped; last-- {
 		swapped = false
@@ -18,5 +18,4 @@ func Bubble[T constraints.Ordered](x []T) []T {
 			}
 		}
 	}
-	return x
 }

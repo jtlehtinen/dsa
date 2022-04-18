@@ -4,7 +4,7 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-func Insertion[T constraints.Ordered](x []T) []T {
+func Insertion[T constraints.Ordered](x []T) {
 	n := len(x)
 
 	for i := 1; i < n; i++ {
@@ -19,6 +19,4 @@ func Insertion[T constraints.Ordered](x []T) []T {
 			x[j+1] = me
 		}
 	}
-
-	return x
 }
