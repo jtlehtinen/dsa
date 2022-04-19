@@ -4,6 +4,9 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
+// Selection sort the slice x using selection sort algorithm.
+//
+// https://en.wikipedia.org/wiki/Selection_sort
 func Selection[T constraints.Ordered](x []T) {
 	n := len(x)
 

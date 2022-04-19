@@ -4,6 +4,9 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
+// Quick sorts the slice x using quicksort algorithm.
+//
+// https://en.wikipedia.org/wiki/Quicksort
 func Quick[T constraints.Ordered](x []T) {
 	// Slice having length less than 2 is already
 	// ordered.

@@ -4,6 +4,9 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
+// Insertion sorts the slice x using insertion sort algorithm.
+//
+// https://en.wikipedia.org/wiki/Insertion_sort
 func Insertion[T constraints.Ordered](x []T) {
 	n := len(x)
 

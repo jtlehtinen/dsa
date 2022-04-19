@@ -37,6 +37,10 @@ func TestQuick(t *testing.T) {
 	testSort(t, Quick[int])
 }
 
+func TestHeap(t *testing.T) {
+	testSort(t, Heap[int])
+}
+
 func benchSort(b *testing.B, f func(x []int)) {
 	var seed int64 = 0xdeadbeef
 
@@ -67,4 +71,8 @@ func BenchmarkSelection(b *testing.B) {
 
 func BenchmarkQuick(b *testing.B) {
 	benchSort(b, Quick[int])
+}
+
+func BenchmarkHeap(b *testing.B) {
+	benchSort(b, Heap[int])
 }
